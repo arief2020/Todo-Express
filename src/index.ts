@@ -1,14 +1,14 @@
-import express, { Request, Response } from 'express'
+import express, { Application } from 'express'
 import dotenv from 'dotenv'
+
+import router from './routes'
 
 dotenv.config()
 
-const app = express()
+const app: Application = express()
 const port = process.env.PORT || 3000
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Hello, World')
-})
+app.use('/', router)
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
