@@ -1,6 +1,8 @@
 node_modules
 dist
 coverage
+# Ignore all .env files
 .env
-.env.dev
-.env.test
+.env.*
+# Except the .env.example file
+!.env.example
