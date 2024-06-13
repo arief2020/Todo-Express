@@ -13,7 +13,7 @@
     "lint": "eslint \"src/**/*.ts\"",
     "prepare": "husky",
     "dev": "cross-env NODE_ENV=dev nodemon ./bin/www --exec ts-node src/app.ts",
-    "test": "cross-env NODE_ENV=test jest --detectOpenHandles --runInBand --forceExit --coverage --verbose",
+    "test": "cross-env NODE_ENV=test jest --detectOpenHandles --runInBand --forceExit --coverage --verbose --watchAll",
     "build": "tsc",
     "start": "node dist/app.js"
   },

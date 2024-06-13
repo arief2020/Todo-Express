@@ -24,7 +24,14 @@ class TodoService {
 
   static async store(body: TodoData) {
     try {
-      const data = this.prepareData(body)
+      const { name, description, status } = body
+      if (!name || !description || !status) {
+        const error = new Error('name, description, and status are required')
+        error.name = 'BadRequest'
+        throw error
+      }
+      const data = { name, description, status }
+      // const data = this.prepareData(body)
       const todo = await TodoRepository.store(data)
       return { data: todo }
     } catch (error) {
@@ -56,6 +63,11 @@ class TodoService {
 
   private static prepareData(body: TodoData) {
     const { name, description, status } = body
+    if (!name || !description || !status) {
+      const error = new Error('name, description, and status are required')
+      error.name = 'BadRequest'
+      throw error
+    }
     return { name, description, status }
   }
 }
